@@ -3,18 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Kirayəvar.az - Azərbaycanda kirayə elanları platforması.">
-<title>Kirayəvar.az | Kirayə elanları</title>
+<title>Kirayəvar.az | İnvestor təqdimatı</title>
 
 <style>
 :root {
     --navy: #10243a;
-    --green: #16a36a;
-    --orange: #ff9d32;
-    --light: #f4f7fa;
-    --white: #ffffff;
-    --text: #243447;
+    --green: #159765;
+    --orange: #f3a33b;
+    --light: #f3f6f9;
+    --text: #26384a;
     --muted: #718096;
+    --white: #ffffff;
 }
 
 * {
@@ -23,435 +22,306 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial, sans-serif;
     background: var(--light);
     color: var(--text);
+    line-height: 1.7;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
+/* COVER */
 
-button, input, select, textarea {
-    font: inherit;
-}
-
-header {
-    background: var(--navy);
+.cover {
+    background: linear-gradient(135deg, #10243a, #1d5260);
     color: white;
-    padding: 17px 6%;
+    padding: 90px 8%;
+    min-height: 570px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .logo {
-    font-size: 27px;
+    font-size: 28px;
     font-weight: bold;
 }
 
 .logo span {
-    color: var(--green);
+    color: #50d59b;
 }
 
-nav {
+.cover-label {
+    margin-top: 85px;
+    color: #80dcb3;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.cover h1 {
+    font-size: clamp(38px, 6vw, 65px);
+    line-height: 1.15;
+    max-width: 900px;
+    margin: 20px 0;
+}
+
+.cover p {
+    font-size: 19px;
+    color: #d9e5ed;
+    max-width: 750px;
+}
+
+.cover-info {
+    margin-top: 45px;
     display: flex;
-    align-items: center;
-    gap: 22px;
+    gap: 30px;
+    flex-wrap: wrap;
+    color: #c6d5df;
+    font-size: 13px;
 }
 
-nav a {
-    font-size: 14px;
-    color: #e7edf4;
-}
-
-nav a:hover {
-    color: var(--orange);
-}
-
-.add-button {
-    background: var(--green);
-    color: white;
-    padding: 12px 18px;
-    border: 0;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.add-button:hover {
-    background: #118657;
-}
-
-.hero {
-    background: linear-gradient(120deg, #10243a, #174c60);
-    color: white;
-    text-align: center;
-    padding: 75px 20px;
-}
-
-.hero h1 {
-    font-size: clamp(30px, 5vw, 46px);
-    margin-bottom: 15px;
-}
-
-.hero p {
-    color: #d7e3ec;
-    font-size: 17px;
-    margin-bottom: 30px;
-}
-
-.search-box {
-    background: white;
-    padding: 12px;
-    border-radius: 12px;
-    max-width: 950px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr auto;
-    gap: 10px;
-}
-
-.search-box input,
-.search-box select {
-    padding: 14px;
-    border: 1px solid #dce3e9;
-    border-radius: 7px;
-    outline: none;
-    min-width: 0;
-    background: white;
-    color: var(--text);
-}
-
-.search-box button {
-    background: var(--orange);
-    color: white;
-    border: 0;
-    padding: 14px 24px;
-    border-radius: 7px;
-    cursor: pointer;
-    font-weight: bold;
-}
+/* GENERAL */
 
 .container {
-    max-width: 1200px;
+    max-width: 1150px;
     margin: auto;
-    padding: 45px 20px;
+    padding: 55px 25px;
 }
 
-.section-title {
-    font-size: 26px;
-    color: var(--navy);
+section {
+    background: white;
+    padding: 38px;
+    border-radius: 14px;
     margin-bottom: 25px;
+    box-shadow: 0 4px 18px rgba(0,0,0,.035);
 }
 
-.categories {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-}
-
-.category {
-    background: white;
-    padding: 25px 15px;
-    text-align: center;
-    border-radius: 12px;
-    cursor: pointer;
-    border: 1px solid #e9eef2;
-    transition: .2s;
-}
-
-.category:hover {
-    transform: translateY(-4px);
-    border-color: var(--green);
-}
-
-.category .emoji {
-    font-size: 35px;
-    margin-bottom: 12px;
-}
-
-.category h3 {
-    color: var(--navy);
-    font-size: 16px;
-}
-
-.category p {
-    color: var(--muted);
-    font-size: 13px;
-    margin-top: 6px;
-}
-
-.listings-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-}
-
-.listings {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-}
-
-.listing {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 3px 14px rgba(0,0,0,.05);
-    transition: .2s;
-}
-
-.listing:hover {
-    transform: translateY(-4px);
-}
-
-.listing-image {
-    height: 190px;
-    background: #dce8e8;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 65px;
-    position: relative;
-}
-
-.listing-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.favorite {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: white;
-    border: 0;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
-    font-size: 19px;
-}
-
-.listing-content {
-    padding: 18px;
-}
-
-.listing-content h3 {
-    font-size: 18px;
-    color: var(--navy);
+.section-number {
+    color: var(--green);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
     margin-bottom: 10px;
 }
 
-.location {
-    color: var(--muted);
-    font-size: 13px;
-    margin-bottom: 12px;
-}
-
-.price {
-    color: var(--green);
-    font-size: 21px;
-    font-weight: bold;
-}
-
-.price small {
-    color: var(--muted);
-    font-size: 12px;
-    font-weight: normal;
-}
-
-.listing-footer {
-    border-top: 1px solid #edf0f3;
-    margin-top: 15px;
-    padding-top: 13px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-}
-
-.contact-button {
-    background: var(--green);
-    color: white;
-    border: 0;
-    border-radius: 6px;
-    padding: 9px 13px;
-    cursor: pointer;
-    font-size: 13px;
-}
-
-.empty {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 40px;
-    background: white;
-    border-radius: 12px;
-    color: var(--muted);
-}
-
-.why-us {
-    background: white;
-}
-
-.features {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.feature {
-    background: var(--light);
-    padding: 25px;
-    border-radius: 10px;
-}
-
-.feature h3 {
+h2 {
     color: var(--navy);
-    margin: 12px 0;
-}
-
-.feature p {
-    color: var(--muted);
-    line-height: 1.6;
-    font-size: 14px;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.65);
-    z-index: 100;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-}
-
-.modal.active {
-    display: flex;
-}
-
-.modal-content {
-    background: white;
-    padding: 28px;
-    border-radius: 14px;
-    width: 100%;
-    max-width: 550px;
-    max-height: 90vh;
-    overflow-y: auto;
-}
-
-.modal-content h2 {
-    color: var(--navy);
+    font-size: 29px;
     margin-bottom: 20px;
 }
 
-.close {
-    float: right;
-    border: 0;
-    background: none;
-    font-size: 25px;
-    cursor: pointer;
+h3 {
+    color: var(--navy);
+    margin: 25px 0 10px;
+    font-size: 19px;
 }
 
-.form-group {
+p {
     margin-bottom: 14px;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 7px;
+ul, ol {
+    padding-left: 25px;
+    margin: 12px 0;
+}
+
+li {
+    margin: 8px 0;
+}
+
+/* NAVIGATION */
+
+.navigation {
+    background: white;
+    border-bottom: 1px solid #e3eaf0;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: var(--navy);
+    font-size: 13px;
     font-weight: bold;
+}
+
+.navigation a:hover {
+    color: var(--green);
+}
+
+/* CARDS */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin: 20px 0;
+}
+
+.card {
+    background: #f6f8fa;
+    border: 1px solid #e6edf2;
+    padding: 22px;
+    border-radius: 10px;
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.card p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.highlight {
+    border-left: 4px solid var(--green);
+    background: #edf8f2;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 0 9px 9px 0;
+}
+
+.warning {
+    border-left: 4px solid var(--orange);
+    background: #fff8ec;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 0 9px 9px 0;
+}
+
+/* TABLES */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
     font-size: 14px;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #dce3e9;
-    border-radius: 7px;
+th, td {
+    border-bottom: 1px solid #e2e9ef;
+    padding: 13px;
+    text-align: left;
+    vertical-align: top;
 }
 
-.form-group textarea {
-    min-height: 90px;
-    resize: vertical;
+th {
+    background: #f0f4f7;
+    color: var(--navy);
 }
 
-.submit-button {
-    width: 100%;
-    padding: 14px;
-    border: 0;
-    border-radius: 7px;
-    background: var(--green);
+/* FINANCE */
+
+.metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.metric {
+    background: var(--navy);
     color: white;
-    font-weight: bold;
-    cursor: pointer;
+    padding: 23px;
+    border-radius: 10px;
 }
+
+.metric strong {
+    display: block;
+    color: #65dba8;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.metric span {
+    font-size: 13px;
+    color: #d1dce5;
+}
+
+/* ROADMAP */
+
+.phase {
+    border-left: 3px solid var(--green);
+    padding: 5px 0 5px 20px;
+    margin: 22px 0;
+}
+
+.phase strong {
+    color: var(--navy);
+    font-size: 17px;
+}
+
+/* FOOTER */
 
 footer {
     background: var(--navy);
     color: white;
-    padding: 40px 6%;
+    padding: 45px 20px;
     text-align: center;
 }
 
 footer p {
-    color: #b9c7d3;
-    margin-top: 12px;
+    color: #b8c8d5;
     font-size: 13px;
+    margin-top: 10px;
 }
 
-@media(max-width: 850px) {
-    .search-box {
-        grid-template-columns: 1fr 1fr;
-    }
+/* RESPONSIVE */
 
-    .listings {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .categories {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .features {
+@media(max-width: 750px) {
+    .grid,
+    .metrics {
         grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 25px;
+    }
+
+    .navigation {
+        justify-content: center;
+    }
+
+    .cover {
+        padding: 55px 25px;
+    }
+
+    .cover-label {
+        margin-top: 55px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 9px;
     }
 }
 
-@media(max-width: 550px) {
-    header {
-        justify-content: center;
-        text-align: center;
+@media print {
+    body {
+        background: white;
     }
 
-    nav {
-        justify-content: center;
-        flex-wrap: wrap;
+    section {
+        box-shadow: none;
+        break-inside: avoid;
     }
 
-    .search-box {
-        grid-template-columns: 1fr;
-    }
-
-    .listings {
-        grid-template-columns: 1fr;
-    }
-
-    .hero {
-        padding: 55px 15px;
+    .navigation {
+        display: none;
     }
 }
 </style>
@@ -459,505 +329,1052 @@ footer p {
 
 <body>
 
-<header>
-    <a href="#" class="logo">Kirayə<span>var</span>.az</a>
+<!-- =====================================================
+     KAPAK VƏ İNVESTOR TƏQDİMATI
+===================================================== -->
 
-    <nav>
-        <a href="#home">Ana səhifə</a>
-        <a href="#categories">Kateqoriyalar</a>
-        <a href="#listings">Elanlar</a>
-        <a href="#about">Haqqımızda</a>
-    </nav>
+<header class="cover">
 
-    <button class="add-button" onclick="openModal()">
-        + Elan yerləşdir
-    </button>
+    <div class="logo">
+        Kirayə<span>var</span>.az
+    </div>
+
+    <div class="cover-label">
+        Investor Presentation | Project Concept
+    </div>
+
+    <h1>
+        Kirayə bazarının rəqəmsal transformasiyası
+    </h1>
+
+    <p>
+        Azərbaycanda əmlak, nəqliyyat, texnika və müxtəlif
+        məhsulların kirayəsi üçün vahid rəqəmsal marketplace
+        yaratmaq konsepsiyası.
+    </p>
+
+    <div class="cover-info">
+        <div>Layihə: <strong>Kirayəvar.az</strong></div>
+        <div>Sənəd: <strong>İnvestor təqdimatı</strong></div>
+        <div>Bazar: <strong>Azərbaycan</strong></div>
+        <div>Versiya: <strong>1.0</strong></div>
+    </div>
+
 </header>
 
-<section class="hero" id="home">
-    <h1>İstədiyini kirayələ, asanlıqla tap!</h1>
-    <p>Kirayəvar.az – Azərbaycanda kirayə elanları üçün vahid platforma.</p>
+<nav class="navigation">
+    <a href="#summary">Xülasə</a>
+    <a href="#problem">Problem</a>
+    <a href="#solution">Həll</a>
+    <a href="#business">Biznes modeli</a>
+    <a href="#market">Bazar</a>
+    <a href="#finance">Maliyyə</a>
+    <a href="#investment">İnvestisiya</a>
+</nav>
 
-    <div class="search-box">
-        <input type="text" id="searchInput"
-               placeholder="Nə axtarırsınız?">
+<main class="container">
 
-        <select id="categoryFilter">
-            <option value="">Bütün kateqoriyalar</option>
-            <option value="Əmlak">Əmlak</option>
-            <option value="Nəqliyyat">Nəqliyyat</option>
-            <option value="Texnika">Texnika</option>
-            <option value="Digər">Digər</option>
-        </select>
+<!-- 01 -->
 
-        <select id="cityFilter">
-            <option value="">Bütün şəhərlər</option>
-            <option value="Bakı">Bakı</option>
-            <option value="Sumqayıt">Sumqayıt</option>
-            <option value="Gəncə">Gəncə</option>
-            <option value="Mingəçevir">Mingəçevir</option>
-        </select>
+<section id="summary">
 
-        <button onclick="filterListings()">Axtar</button>
-    </div>
-</section>
+<div class="section-number">01 / EXECUTIVE SUMMARY</div>
 
-<section class="container" id="categories">
-    <h2 class="section-title">Kateqoriyalar</h2>
+<h2>Layihənin icra xülasəsi</h2>
 
-    <div class="categories">
+<p>
+Kirayəvar.az müxtəlif növ əmlakların, nəqliyyat vasitələrinin,
+texnikanın, avadanlıqların və gündəlik istifadə məhsullarının
+kirayəsi üzrə təklif və tələbi birləşdirməyi hədəfləyən
+rəqəmsal platforma layihəsidir.
+</p>
 
-        <div class="category" onclick="selectCategory('Əmlak')">
-            <div class="emoji">🏠</div>
-            <h3>Əmlak</h3>
-            <p>Ev, mənzil, obyekt</p>
-        </div>
+<p>
+Layihənin əsas məqsədi kirayə vermək istəyən şəxslərlə
+kirayə axtaran istifadəçilər arasında rahat, sürətli və
+əlçatan əlaqə infrastrukturu yaratmaqdır.
+</p>
 
-        <div class="category" onclick="selectCategory('Nəqliyyat')">
-            <div class="emoji">🚗</div>
-            <h3>Nəqliyyat</h3>
-            <p>Avtomobil, motosiklet</p>
-        </div>
+<p>
+Kirayəvar.az yalnız elan saytı kimi deyil, gələcəkdə
+kirayə iqtisadiyyatının müxtəlif istiqamətlərini özündə
+birləşdirən geniş marketplace ekosistemi kimi inkişaf
+etdirilə bilər.
+</p>
 
-        <div class="category" onclick="selectCategory('Texnika')">
-            <div class="emoji">💻</div>
-            <h3>Texnika</h3>
-            <p>Kompüter, kamera, avadanlıq</p>
-        </div>
+<div class="metrics">
 
-        <div class="category" onclick="selectCategory('Digər')">
-            <div class="emoji">📦</div>
-            <h3>Digər</h3>
-            <p>Müxtəlif kirayə məhsulları</p>
-        </div>
-
-    </div>
-</section>
-
-<section class="container" id="listings">
-
-    <div class="listings-header">
-        <h2 class="section-title">Son elanlar</h2>
-        <span id="resultCount"></span>
+    <div class="metric">
+        <strong>Marketplace</strong>
+        <span>Çoxkateqoriyalı rəqəmsal platforma</span>
     </div>
 
-    <div class="listings" id="listingContainer"></div>
-
-</section>
-
-<section class="why-us" id="about">
-    <div class="container">
-        <h2 class="section-title">Niyə Kirayəvar.az?</h2>
-
-        <div class="features">
-
-            <div class="feature">
-                <div class="emoji">🔎</div>
-                <h3>Asan axtarış</h3>
-                <p>İstədiyiniz məhsulu kateqoriyalara və şəhərlərə
-                görə rahatlıqla tapa bilərsiniz.</p>
-            </div>
-
-            <div class="feature">
-                <div class="emoji">📢</div>
-                <h3>Asan elan yerləşdirmə</h3>
-                <p>Kirayə vermək istədiyiniz məhsul və ya əmlak
-                haqqında elan yarada bilərsiniz.</p>
-            </div>
-
-            <div class="feature">
-                <div class="emoji">🤝</div>
-                <h3>Birbaşa əlaqə</h3>
-                <p>Elan sahibi ilə telefon və ya WhatsApp vasitəsilə
-                əlaqə saxlaya bilərsiniz.</p>
-            </div>
-
-        </div>
+    <div class="metric">
+        <strong>Azərbaycan</strong>
+        <span>İlkin hədəf bazar</span>
     </div>
-</section>
 
-<footer>
-    <h2>Kirayəvar.az</h2>
-    <p>Kirayə axtarışının rahat yolu.</p>
-    <p>© 2026 Kirayəvar.az. Bütün hüquqlar qorunur.</p>
-</footer>
-
-<!-- ELAN ƏLAVƏ ET PƏNCƏRƏSİ -->
-
-<div class="modal" id="listingModal">
-    <div class="modal-content">
-
-        <button class="close" onclick="closeModal()">×</button>
-
-        <h2>Yeni elan yerləşdir</h2>
-
-        <form id="listingForm">
-
-            <div class="form-group">
-                <label>Elanın adı</label>
-                <input type="text" id="title" required
-                       placeholder="Məsələn: 2 otaqlı mənzil">
-            </div>
-
-            <div class="form-group">
-                <label>Kateqoriya</label>
-                <select id="newCategory" required>
-                    <option value="">Seçin</option>
-                    <option>Əmlak</option>
-                    <option>Nəqliyyat</option>
-                    <option>Texnika</option>
-                    <option>Digər</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Şəhər</label>
-                <select id="newCity" required>
-                    <option value="">Seçin</option>
-                    <option>Bakı</option>
-                    <option>Sumqayıt</option>
-                    <option>Gəncə</option>
-                    <option>Mingəçevir</option>
-                    <option>Digər</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Qiymət (AZN)</label>
-                <input type="number" id="price" min="0"
-                       required placeholder="Məsələn: 250">
-            </div>
-
-            <div class="form-group">
-                <label>Telefon nömrəsi</label>
-                <input type="tel" id="phone" required
-                       placeholder="+994...">
-            </div>
-
-            <div class="form-group">
-                <label>Şəkil linki (istəyə bağlı)</label>
-                <input type="url" id="imageUrl"
-                       placeholder="https://...">
-            </div>
-
-            <div class="form-group">
-                <label>Açıqlama</label>
-                <textarea id="description"
-                          placeholder="Elan haqqında məlumat..."></textarea>
-            </div>
-
-            <button class="submit-button" type="submit">
-                Elanı yerləşdir
-            </button>
-
-        </form>
+    <div class="metric">
+        <strong>Mərhələli inkişaf</strong>
+        <span>MVP-dən geniş ekosistemə</span>
     </div>
+
 </div>
 
-<script>
-
-// DEMO ELANLAR
-
-let listings = [
-    {
-        id: 1,
-        title: "2 otaqlı mənzil kirayə verilir",
-        category: "Əmlak",
-        city: "Bakı",
-        price: 450,
-        phone: "+994501234567",
-        description: "Şəhərin mərkəzinə yaxın mənzil.",
-        image: "",
-        emoji: "🏠"
-    },
-    {
-        id: 2,
-        title: "Avtomobil kirayəsi",
-        category: "Nəqliyyat",
-        city: "Bakı",
-        price: 70,
-        phone: "+994501234567",
-        description: "Günlük avtomobil kirayəsi.",
-        image: "",
-        emoji: "🚗"
-    },
-    {
-        id: 3,
-        title: "Noutbuk kirayəsi",
-        category: "Texnika",
-        city: "Gəncə",
-        price: 15,
-        phone: "+994501234567",
-        description: "İş və təhsil üçün noutbuk.",
-        image: "",
-        emoji: "💻"
-    },
-    {
-        id: 4,
-        title: "Bağ evi kirayə verilir",
-        category: "Əmlak",
-        city: "Sumqayıt",
-        price: 100,
-        phone: "+994501234567",
-        description: "Ailəvi istirahət üçün bağ evi.",
-        image: "",
-        emoji: "🏡"
-    },
-    {
-        id: 5,
-        title: "Fotoaparat kirayəsi",
-        category: "Texnika",
-        city: "Bakı",
-        price: 25,
-        phone: "+994501234567",
-        description: "Foto və video çəkilişləri üçün.",
-        image: "",
-        emoji: "📷"
-    },
-    {
-        id: 6,
-        title: "Tədbir avadanlıqları",
-        category: "Digər",
-        city: "Gəncə",
-        price: 40,
-        phone: "+994501234567",
-        description: "Müxtəlif tədbirlər üçün avadanlıq.",
-        image: "",
-        emoji: "📦"
-    }
-];
-
-let favorites = [];
-
-function renderListings(data = listings) {
-
-    const container = document.getElementById("listingContainer");
-
-    document.getElementById("resultCount").textContent =
-        data.length + " elan";
-
-    if (data.length === 0) {
-        container.innerHTML =
-            '<div class="empty">Axtarışınıza uyğun elan tapılmadı.</div>';
-        return;
-    }
-
-    container.innerHTML = data.map(item => `
-
-        <article class="listing">
-
-            <div class="listing-image">
-                ${
-                    item.image
-                    ? `<img src="${escapeHTML(item.image)}"
-                             alt="${escapeHTML(item.title)}"
-                             onerror="this.style.display='none'">`
-                    : item.emoji
-                }
-
-                <button class="favorite"
-                    onclick="toggleFavorite(${item.id})"
-                    title="Seçilmişlərə əlavə et">
-                    ${favorites.includes(item.id) ? "❤️" : "♡"}
-                </button>
-            </div>
+<div class="highlight">
+<strong>İnvestisiya ideyası:</strong>
+Kirayəvar.az istifadə olunmayan resursları iqtisadi
+dəyərə çevirmək və kirayə bazarında rəqəmsal
+vasitəçilik infrastrukturu yaratmaq potensialına malikdir.
+</div>
 
-            <div class="listing-content">
+</section>
 
-                <h3>${escapeHTML(item.title)}</h3>
+<!-- 02 -->
 
-                <p class="location">
-                    📍 ${escapeHTML(item.city)} ·
-                    ${escapeHTML(item.category)}
-                </p>
+<section id="vision">
 
-                <p class="price">
-                    ${Number(item.price).toLocaleString("az-AZ")} AZN
-                    <small>/ razılaşma</small>
-                </p>
+<div class="section-number">02 / VISION & MISSION</div>
 
-                <div class="listing-footer">
+<h2>Missiya və uzunmüddətli vizyon</h2>
 
-                    <span>Kirayə elanı</span>
+<h3>Missiya</h3>
 
-                    <button class="contact-button"
-                        onclick="contactSeller('${escapeHTML(item.phone)}')">
-                        Əlaqə
-                    </button>
+<p>
+İnsanların ehtiyac duyduqları məhsulları və məkanları
+almaq əvəzinə kirayə götürməsini, istifadə etmədikləri
+resursları isə gəlir mənbəyinə çevirməsini asanlaşdırmaq.
+</p>
 
-                </div>
+<h3>Vizyon</h3>
 
-            </div>
+<p>
+Kirayəvar.az-ı Azərbaycanda kirayə təkliflərinin
+axtarışı və təqdimatı üzrə tanınan, etibarlı və
+genişlənə bilən rəqəmsal platformaya çevirmək.
+</p>
 
-        </article>
+<h3>Strateji dəyərlər</h3>
 
-    `).join("");
-}
+<div class="grid">
 
-function escapeHTML(value) {
-    return String(value ?? "").replace(/[&<>"']/g, char => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;"
-    })[char]);
-}
+    <div class="card">
+        <h3>Əlçatanlıq</h3>
+        <p>Kirayə təkliflərinə rahat çıxış.</p>
+    </div>
 
-// AXTARIŞ VƏ FİLTR
+    <div class="card">
+        <h3>Etibar</h3>
+        <p>Şəffaf elanlar və təhlükəsiz istifadə mühiti.</p>
+    </div>
 
-function filterListings() {
+    <div class="card">
+        <h3>İqtisadi səmərəlilik</h3>
+        <p>İstifadə olunmayan resurslardan əlavə gəlir.</p>
+    </div>
 
-    const search = document.getElementById("searchInput")
-        .value.toLowerCase().trim();
+    <div class="card">
+        <h3>İnnovasiya</h3>
+        <p>Kirayə xidmətlərinin rəqəmsallaşdırılması.</p>
+    </div>
 
-    const category = document.getElementById("categoryFilter").value;
-    const city = document.getElementById("cityFilter").value;
+</div>
 
-    const filtered = listings.filter(item => {
+</section>
 
-        const matchesSearch =
-            item.title.toLowerCase().includes(search) ||
-            item.description.toLowerCase().includes(search);
+<!-- 03 -->
 
-        const matchesCategory =
-            !category || item.category === category;
+<section id="problem">
 
-        const matchesCity =
-            !city || item.city === city;
+<div class="section-number">03 / MARKET PROBLEM</div>
 
-        return matchesSearch && matchesCategory && matchesCity;
-    });
+<h2>Bazar problemi və imkan</h2>
 
-    renderListings(filtered);
-}
+<p>
+Kirayə təklifləri müxtəlif elan saytlarında,
+sosial şəbəkələrdə, fərdi səhifələrdə və şəxsi
+əlaqələrdə dağınıq şəkildə təqdim oluna bilər.
+</p>
 
-function selectCategory(category) {
+<p>
+İstifadəçi uyğun təklifi tapmaq üçün fərqli
+mənbələrə baxmalı, qiymətləri müqayisə etməli
+və elan sahibinin etibarlılığını ayrıca yoxlamalıdır.
+</p>
 
-    document.getElementById("categoryFilter").value = category;
+<h3>Kirayə axtaranların problemləri</h3>
 
-    document.getElementById("listings").scrollIntoView({
-        behavior: "smooth"
-    });
+<ul>
+    <li>Uyğun təklifləri müxtəlif mənbələrdə axtarmaq.</li>
+    <li>Qiymət və şərtləri müqayisə etməkdə çətinlik.</li>
+    <li>Natamam və ya köhnəlmiş elanlarla qarşılaşmaq.</li>
+    <li>Elan sahibi ilə əlaqədə qeyri-müəyyənlik.</li>
+</ul>
 
-    filterListings();
-}
+<h3>Kirayə verənlərin problemləri</h3>
 
-// SEÇİLMİŞ ELANLAR
+<ul>
+    <li>Potensial müştərilərə çatmaq üçün bir neçə kanaldan istifadə.</li>
+    <li>Elanların görünürlüğünü artırmaq üçün məhdud imkanlar.</li>
+    <li>Elan performansını izləməkdə çətinlik.</li>
+</ul>
 
-function toggleFavorite(id) {
+<div class="warning">
+Bu problemlərin miqyası ilkin bazar araşdırması,
+istifadəçi müsahibələri və pilot layihə vasitəsilə
+təsdiqlənməlidir.
+</div>
 
-    if (favorites.includes(id)) {
-        favorites = favorites.filter(item => item !== id);
-    } else {
-        favorites.push(id);
-    }
+</section>
 
-    filterListings();
-}
+<!-- 04 -->
 
-// ƏLAQƏ
+<section id="solution">
 
-function contactSeller(phone) {
+<div class="section-number">04 / PROPOSED SOLUTION</div>
 
-    const cleanPhone = phone.replace(/[^\d+]/g, "");
+<h2>Kirayəvar.az həlli</h2>
 
-    if (!cleanPhone) {
-        alert("Telefon nömrəsi mövcud deyil.");
-        return;
-    }
+<p>
+Kirayəvar.az kirayə verən və kirayə axtaran tərəflər
+üçün vahid rəqəmsal kataloq və əlaqə platforması
+kimi nəzərdə tutulur.
+</p>
 
-    const whatsappNumber = cleanPhone.replace(/\D/g, "");
+<div class="grid">
 
-    const choice = confirm(
-        "OK düyməsi WhatsApp-a, Cancel düyməsi telefon zənginə keçid edir."
-    );
+    <div class="card">
+        <h3>Vahid elan bazası</h3>
+        <p>Müxtəlif kirayə kateqoriyalarının bir platformada toplanması.</p>
+    </div>
 
-    if (choice) {
-        window.open(
-            "https://wa.me/" + whatsappNumber,
-            "_blank"
-        );
-    } else {
-        window.location.href = "tel:" + cleanPhone;
-    }
-}
+    <div class="card">
+        <h3>Ağıllı axtarış</h3>
+        <p>Kateqoriya, şəhər, qiymət və digər meyarlar üzrə filtrasiya.</p>
+    </div>
 
-// ELAN ƏLAVƏ ET
+    <div class="card">
+        <h3>Elan idarəetməsi</h3>
+        <p>Elanların yaradılması, yenilənməsi və idarə olunması.</p>
+    </div>
 
-function openModal() {
-    document.getElementById("listingModal").classList.add("active");
-}
+    <div class="card">
+        <h3>Əlaqə sistemi</h3>
+        <p>Elan sahibi ilə birbaşa əlaqə və gələcəkdə daxili mesajlaşma.</p>
+    </div>
 
-function closeModal() {
-    document.getElementById("listingModal").classList.remove("active");
-}
+    <div class="card">
+        <h3>Etibar sistemi</h3>
+        <p>Moderasiya, şikayət və istifadəçi təsdiqləmə mexanizmləri.</p>
+    </div>
 
-document.getElementById("listingForm")
-.addEventListener("submit", function(event) {
+    <div class="card">
+        <h3>Biznes alətləri</h3>
+        <p>Ödənişli elanlar, reklam və peşəkar hesab paketləri.</p>
+    </div>
 
-    event.preventDefault();
+</div>
 
-    const newListing = {
+</section>
 
-        id: Date.now(),
+<!-- 05 -->
 
-        title: document.getElementById("title").value.trim(),
+<section id="categories">
 
-        category: document.getElementById("newCategory").value,
+<div class="section-number">05 / MARKET CATEGORIES</div>
 
-        city: document.getElementById("newCity").value,
+<h2>Əhatə olunan xidmət kateqoriyaları</h2>
 
-        price: Number(document.getElementById("price").value),
+<table>
 
-        phone: document.getElementById("phone").value.trim(),
+<thead>
+<tr>
+<th>Kateqoriya</th>
+<th>Xidmət və məhsul nümunələri</th>
+<th>Hədəf ehtiyac</th>
+</tr>
+</thead>
 
-        image: document.getElementById("imageUrl").value.trim(),
+<tbody>
 
-        description:
-            document.getElementById("description").value.trim(),
+<tr>
+<td><strong>Əmlak</strong></td>
+<td>Mənzil, ev, bağ evi, ofis, obyekt, otaq</td>
+<td>Yaşayış və iş sahəsi</td>
+</tr>
 
-        emoji: "📦"
-    };
+<tr>
+<td><strong>Nəqliyyat</strong></td>
+<td>Avtomobil, motosiklet, velosiped</td>
+<td>Müvəqqəti nəqliyyat</td>
+</tr>
 
-    if (!newListing.title || !newListing.phone ||
-        !newListing.category || !newListing.city ||
-        !Number.isFinite(newListing.price) ||
-        newListing.price < 0) {
+<tr>
+<td><strong>Texnika</strong></td>
+<td>Noutbuk, kamera, kompüter, avadanlıq</td>
+<td>İş və layihə ehtiyacı</td>
+</tr>
 
-        alert("Zəhmət olmasa, məlumatları düzgün doldurun.");
-        return;
-    }
+<tr>
+<td><strong>Məişət</strong></td>
+<td>Mebel, məişət cihazları, məişət əşyaları</td>
+<td>Müvəqqəti istifadə</td>
+</tr>
 
-    listings.unshift(newListing);
+<tr>
+<td><strong>Tədbir və idman</strong></td>
+<td>Səs avadanlığı, işıqlandırma, idman ləvazimatları</td>
+<td>Qısamüddətli tədbir və fəaliyyət</td>
+</tr>
 
-    renderListings();
+<tr>
+<td><strong>Digər</strong></td>
+<td>Müxtəlif kirayə məhsulları</td>
+<td>Xüsusi ehtiyaclar</td>
+</tr>
 
-    this.reset();
+</tbody>
+</table>
 
-    closeModal();
+</section>
 
-    document.getElementById("listings").scrollIntoView({
-        behavior: "smooth"
-    });
+<!-- 06 -->
 
-    alert("Elan bu demo səhifəyə əlavə edildi!");
-});
+<section id="audience">
 
-// ENTER İLƏ AXTARIŞ
+<div class="section-number">06 / TARGET AUDIENCE</div>
 
-document.getElementById("searchInput")
-.addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-        filterListings();
-    }
-});
+<h2>Hədəf auditoriyası</h2>
 
-// İLK YÜKLƏNMƏ
+<div class="grid">
 
-renderListings();
+    <div class="card">
+        <h3>Fərdi istifadəçilər</h3>
+        <p>Müvəqqəti olaraq məhsul və ya əmlaka ehtiyacı olan şəxslər.</p>
+    </div>
 
-</script>
+    <div class="card">
+        <h3>Fərdi elan sahibləri</h3>
+        <p>Öz əmlakını, avtomobilini və ya avadanlığını kirayəyə verənlər.</p>
+    </div>
+
+    <div class="card">
+        <h3>Kiçik və orta biznes</h3>
+        <p>Kirayə xidmətləri göstərən şirkətlər və sahibkarlar.</p>
+    </div>
+
+    <div class="card">
+        <h3>Peşəkar kirayə operatorları</h3>
+        <p>Çoxsaylı elanları və müştəri bazası olan xidmət təminatçıları.</p>
+    </div>
+
+</div>
+
+<h3>İki tərəfli marketplace strategiyası</h3>
+
+<p>
+Platformanın inkişafı həm təklif, həm də tələb
+tərəfinin paralel böyüməsindən asılıdır.
+</p>
+
+<p>
+İlkin mərhələdə keyfiyyətli elan bazası yaratmaq,
+daha sonra bu təkliflərə uyğun istifadəçi axını
+formalaşdırmaq əsas prioritet olmalıdır.
+</p>
+
+</section>
+
+<!-- 07 -->
+
+<section id="business">
+
+<div class="section-number">07 / BUSINESS MODEL</div>
+
+<h2>Biznes modeli</h2>
+
+<p>
+Kirayəvar.az ilkin mərhələdə istifadəçi və elan
+bazasının formalaşdırılmasına fokuslana bilər.
+Sonrakı mərhələdə platforma əlavə dəyər yaradan
+ödənişli xidmətlər təqdim edə bilər.
+</p>
+
+<h3>Freemium modeli</h3>
+
+<p>
+Əsas elan yerləşdirmə funksiyası pulsuz və ya
+məhdud pulsuz təqdim oluna bilər. Əlavə görünürlük,
+statistika və biznes imkanları ödənişli ola bilər.
+</p>
+
+<h3>Ödənişli xidmətlər</h3>
+
+<ul>
+    <li>Elanın önə çəkilməsi.</li>
+    <li>VIP elan statusu.</li>
+    <li>Biznes hesabları.</li>
+    <li>Çoxsaylı elan paketləri.</li>
+    <li>Əlavə reklam imkanları.</li>
+</ul>
+
+</section>
+
+<!-- 08 -->
+
+<section id="revenue">
+
+<div class="section-number">08 / REVENUE STREAMS</div>
+
+<h2>Gəlir mənbələri</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>Gəlir istiqaməti</th>
+<th>İş prinsipi</th>
+<th>Prioritet</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Ödənişli elan irəliçəkmə</td>
+<td>Elanın daha görünən mövqedə göstərilməsi</td>
+<td>Yüksək</td>
+</tr>
+
+<tr>
+<td>Elan paketləri</td>
+<td>Müəyyən sayda elan və əlavə üstünlüklər</td>
+<td>Yüksək</td>
+</tr>
+
+<tr>
+<td>Biznes abunəliyi</td>
+<td>Peşəkar istifadəçilər üçün aylıq paketlər</td>
+<td>Orta</td>
+</tr>
+
+<tr>
+<td>Reklam gəlirləri</td>
+<td>Platformada reklam sahələrinin satışı</td>
+<td>Orta</td>
+</tr>
+
+<tr>
+<td>Əməliyyat komissiyası</td>
+<td>Platforma üzərindən tamamlanan əməliyyatdan xidmət haqqı</td>
+<td>Gələcək</td>
+</tr>
+
+<tr>
+<td>Tərəfdaşlıq</td>
+<td>Əlaqəli xidmət təminatçıları ilə kommersiya əməkdaşlığı</td>
+<td>Gələcək</td>
+</tr>
+
+</tbody>
+</table>
+
+<h3>İlkin qiymət hipotezi</h3>
+
+<p>
+Konsept çərçivəsində 1 AZN, 5 AZN və 15 AZN
+kimi giriş səviyyəli ödənişli xidmətlər sınaqdan
+keçirilə bilər.
+</p>
+
+<p>
+Bu qiymətlər təsdiqlənmiş tariflər deyil.
+Real qiymətlər istifadəçi tələbi və ödənişə
+hazırlıq əsasında müəyyən edilməlidir.
+</p>
+
+</section>
+
+<!-- 09 -->
+
+<section id="market">
+
+<div class="section-number">09 / MARKET ENTRY</div>
+
+<h2>Bazara giriş strategiyası</h2>
+
+<p>
+Layihənin bütün kateqoriyalarda eyni anda
+başlaması əvəzinə, ilkin mərhələdə məhdud
+coğrafiya və kateqoriyalarda bazar likvidliyi
+yaratmaq tövsiyə olunur.
+</p>
+
+<h3>İlkin addımlar</h3>
+
+<ol>
+    <li>İstifadəçi və elan sahibi ehtiyaclarının araşdırılması.</li>
+    <li>İlkin kateqoriyaların seçilməsi.</li>
+    <li>İlk elan sahiblərinin platformaya cəlb edilməsi.</li>
+    <li>Keyfiyyətli elan bazasının yaradılması.</li>
+    <li>İstifadəçilərin reklam və kontent vasitəsilə cəlbi.</li>
+    <li>İstifadəçi davranışının ölçülməsi.</li>
+    <li>Yeni kateqoriyalara mərhələli genişlənmə.</li>
+</ol>
+
+</section>
+
+<!-- 10 -->
+
+<section id="competition">
+
+<div class="section-number">10 / COMPETITIVE POSITION</div>
+
+<h2>Rəqabət üstünlüyü</h2>
+
+<p>
+Kirayəvar.az-ın fərqlənmə strategiyası kirayə
+ehtiyacına fokuslanmış, kateqoriyalar üzrə
+strukturlaşdırılmış platforma yaratmaqdır.
+</p>
+
+<ul>
+    <li>Kirayə təkliflərinin vahid platformada toplanması.</li>
+    <li>Kirayə ehtiyacına uyğun axtarış və filtrasiya.</li>
+    <li>Elan sahibləri üçün əlavə kommersiya alətləri.</li>
+    <li>Etibar və moderasiya mexanizmləri.</li>
+    <li>Kateqoriyalar və regionlar üzrə genişlənmə imkanı.</li>
+</ul>
+
+<div class="warning">
+Bu üstünlüklər hələ bazarda təsdiqlənmiş nəticə
+kimi təqdim edilməməlidir. Rəqib təhlili və
+pilot sınaqlar vasitəsilə yoxlanmalıdır.
+</div>
+
+</section>
+
+<!-- 11 -->
+
+<section id="marketing">
+
+<div class="section-number">11 / MARKETING STRATEGY</div>
+
+<h2>Marketinq və istifadəçi artımı</h2>
+
+<div class="grid">
+
+    <div class="card">
+        <h3>Sosial media</h3>
+        <p>Instagram, TikTok, Facebook və digər platformalarda tanıtım.</p>
+    </div>
+
+    <div class="card">
+        <h3>SEO</h3>
+        <p>Google axtarışlarında kateqoriya və şəhər üzrə görünürlük.</p>
+    </div>
+
+    <div class="card">
+        <h3>Rəqəmsal reklam</h3>
+        <p>Hədəflənmiş reklam kampaniyaları və auditoriya testləri.</p>
+    </div>
+
+    <div class="card">
+        <h3>Tərəfdaşlıq</h3>
+        <p>Agentliklər, bizneslər və kirayə xidmətləri ilə əməkdaşlıq.</p>
+    </div>
+
+</div>
+
+</section>
+
+<!-- 12 -->
+
+<section id="operations">
+
+<div class="section-number">12 / OPERATIONS</div>
+
+<h2>Əməliyyat modeli</h2>
+
+<ul>
+    <li>Elanların moderasiyası.</li>
+    <li>İstifadəçi dəstəyi.</li>
+    <li>Şikayət və problem müraciətlərinin idarə edilməsi.</li>
+    <li>Elanların aktuallığının yoxlanması.</li>
+    <li>Biznes müştəriləri ilə əlaqələrin qurulması.</li>
+    <li>Platforma göstəricilərinin təhlili.</li>
+</ul>
+
+<p>
+İlkin mərhələdə əməliyyatlar kiçik komanda
+vasitəsilə idarə oluna bilər. İstifadəçi sayı
+artdıqca avtomatlaşdırma tətbiq edilməlidir.
+</p>
+
+</section>
+
+<!-- 13 -->
+
+<section id="technology">
+
+<div class="section-number">13 / TECHNOLOGY STRATEGY</div>
+
+<h2>Texnoloji strategiya</h2>
+
+<p>
+Platformanın texniki arxitekturası təhlükəsiz,
+miqyaslana bilən və gələcək funksiyaların
+əlavə edilməsinə uyğun qurulmalıdır.
+</p>
+
+<table>
+
+<thead>
+<tr>
+<th>Komponent</th>
+<th>Təyinat</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Frontend</td>
+<td>İstifadəçi üçün veb platforma.</td>
+</tr>
+
+<tr>
+<td>Backend</td>
+<td>Biznes məntiqi və API infrastrukturu.</td>
+</tr>
+
+<tr>
+<td>Database</td>
+<td>İstifadəçi, elan və əməliyyat məlumatları.</td>
+</tr>
+
+<tr>
+<td>Cloud Storage</td>
+<td>Şəkil və digər faylların saxlanması.</td>
+</tr>
+
+<tr>
+<td>Admin Panel</td>
+<td>Moderasiya və platforma idarəetməsi.</td>
+</tr>
+
+<tr>
+<td>Analytics</td>
+<td>İstifadəçi davranışı və biznes göstəriciləri.</td>
+</tr>
+
+<tr>
+<td>Security</td>
+<td>Giriş nəzarəti və məlumatların qorunması.</td>
+</tr>
+
+</tbody>
+</table>
+
+</section>
+
+<!-- 14 -->
+
+<section id="trust">
+
+<div class="section-number">14 / TRUST & SECURITY</div>
+
+<h2>Etibar və təhlükəsizlik strategiyası</h2>
+
+<ul>
+    <li>İstifadəçi hesablarının təsdiqlənməsi.</li>
+    <li>Elanların yoxlanması və moderasiyası.</li>
+    <li>Saxta elanlara qarşı şikayət mexanizmi.</li>
+    <li>İstifadəçi məlumatlarının qorunması.</li>
+    <li>İstifadə şərtləri və məxfilik siyasəti.</li>
+    <li>Gələcəkdə reytinq və təsdiqlənmiş profil sistemi.</li>
+</ul>
+
+<p>
+Ödəniş və bron sistemləri tətbiq olunarsa,
+maliyyə təhlükəsizliyi, mübahisələrin həlli
+və hüquqi məsuliyyət ayrıca müəyyənləşdirilməlidir.
+</p>
+
+</section>
+
+<!-- 15 -->
+
+<section id="roadmap">
+
+<div class="section-number">15 / DEVELOPMENT ROADMAP</div>
+
+<h2>İnkişaf yol xəritəsi</h2>
+
+<div class="phase">
+<strong>Mərhələ 1 — Araşdırma</strong>
+<p>Bazar ehtiyaclarının, kateqoriyaların və rəqabətin araşdırılması.</p>
+</div>
+
+<div class="phase">
+<strong>Mərhələ 2 — MVP</strong>
+<p>Əsas elan, axtarış, hesab və admin funksiyalarının hazırlanması.</p>
+</div>
+
+<div class="phase">
+<strong>Mərhələ 3 — Pilot</strong>
+<p>Seçilmiş istifadəçilərlə real bazar sınağının keçirilməsi.</p>
+</div>
+
+<div class="phase">
+<strong>Mərhələ 4 — Monetizasiya</strong>
+<p>Ödənişli elan, reklam və biznes paketlərinin sınaqdan keçirilməsi.</p>
+</div>
+
+<div class="phase">
+<strong>Mərhələ 5 — Genişlənmə</strong>
+<p>Yeni kateqoriyalar, regionlar və istifadəçi qruplarının əlavə edilməsi.</p>
+</div>
+
+<div class="phase">
+<strong>Mərhələ 6 — Ekosistem</strong>
+<p>Bron, ödəniş, reytinq və əlavə tərəfdaş xidmətlərinin inkişafı.</p>
+</div>
+
+</section>
+
+<!-- 16 -->
+
+<section id="finance">
+
+<div class="section-number">16 / FINANCIAL FRAMEWORK</div>
+
+<h2>Maliyyə strategiyası</h2>
+
+<p>
+Layihənin maliyyə modeli real istifadəçi,
+elan və gəlir göstəriciləri əsasında
+hazırlanmalıdır.
+</p>
+
+<h3>Əsas xərc istiqamətləri</h3>
+
+<table>
+
+<thead>
+<tr>
+<th>Xərc</th>
+<th>Əhatə dairəsi</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Texnologiya</td>
+<td>Proqramlaşdırma, server, domen və texniki xidmət.</td>
+</tr>
+
+<tr>
+<td>Marketinq</td>
+<td>Reklam, kontent, SEO və tanıtım.</td>
+</tr>
+
+<tr>
+<td>Əməliyyat</td>
+<td>Moderasiya və istifadəçi dəstəyi.</td>
+</tr>
+
+<tr>
+<td>Hüquqi xidmətlər</td>
+<td>İstifadə şərtləri, müqavilələr və hüquqi məsləhət.</td>
+</tr>
+
+<tr>
+<td>İdarəetmə</td>
+<td>Komanda və inzibati xərclər.</td>
+</tr>
+
+</tbody>
+</table>
+
+<h3>Ölçülməli maliyyə göstəriciləri</h3>
+
+<ul>
+    <li>Müştəri cəlbetmə xərci (CAC).</li>
+    <li>Aktiv elan başına orta gəlir.</li>
+    <li>Ödənişli xidmətə keçid faizi.</li>
+    <li>İstifadəçinin platformada qalma müddəti.</li>
+    <li>Ümumi gəlir və əməliyyat xərcləri.</li>
+    <li>Marketinq investisiyasının geri dönüşü.</li>
+</ul>
+
+<div class="warning">
+Təsdiqlənmiş maliyyə məlumatları olmadan
+gəlir və mənfəət rəqəmləri fakt kimi
+göstərilməməlidir.
+</div>
+
+</section>
+
+<!-- 17 -->
+
+<section id="investment">
+
+<div class="section-number">17 / INVESTMENT PROPOSAL</div>
+
+<h2>İnvestor üçün investisiya təklifi</h2>
+
+<p>
+Kirayəvar.az layihəsinin maliyyələşdirilməsi
+məhsulun hazırlanması, bazar araşdırması,
+pilot fəaliyyət və istifadəçi bazasının
+formalaşdırılması istiqamətlərinə yönəldilə bilər.
+</p>
+
+<h3>İnvestisiyanın istifadə istiqamətləri</h3>
+
+<div class="grid">
+
+    <div class="card">
+        <h3>Texniki inkişaf</h3>
+        <p>MVP, backend, verilənlər bazası və admin panel.</p>
+    </div>
+
+    <div class="card">
+        <h3>Marketinq</h3>
+        <p>İlkin auditoriyanın və elan sahiblərinin cəlbi.</p>
+    </div>
+
+    <div class="card">
+        <h3>Əməliyyat</h3>
+        <p>Moderasiya, dəstək və gündəlik idarəetmə.</p>
+    </div>
+
+    <div class="card">
+        <h3>Hüquq və təhlükəsizlik</h3>
+        <p>Hüquqi sənədlər və məlumat təhlükəsizliyi.</p>
+    </div>
+
+</div>
+
+<h3>İnvestorla razılaşdırılmalı məsələlər</h3>
+
+<ul>
+    <li>İnvestisiya məbləği.</li>
+    <li>Şirkətin hüquqi strukturu.</li>
+    <li>İnvestorun payı və hüquqları.</li>
+    <li>Kapitalın istifadə planı.</li>
+    <li>Mərhələlər üzrə nəticə hədəfləri.</li>
+    <li>Hesabatlılıq və idarəetmə qaydaları.</li>
+</ul>
+
+<div class="highlight">
+İnvestisiya məbləği və şirkətin qiymətləndirilməsi
+bazar araşdırması, texniki büdcə və maliyyə
+proqnozu hazırlandıqdan sonra müəyyən edilməlidir.
+</div>
+
+</section>
+
+<!-- 18 -->
+
+<section id="team">
+
+<div class="section-number">18 / TEAM STRUCTURE</div>
+
+<h2>Komanda strukturu</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>Rol</th>
+<th>Məsuliyyət</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Founder / Project Lead</td>
+<td>Strategiya və layihənin ümumi idarə edilməsi.</td>
+</tr>
+
+<tr>
+<td>Product Manager</td>
+<td>Məhsul strategiyası və prioritetlər.</td>
+</tr>
+
+<tr>
+<td>UI/UX Designer</td>
+<td>İstifadəçi təcrübəsi və dizayn.</td>
+</tr>
+
+<tr>
+<td>Frontend Developer</td>
+<td>Veb platformanın hazırlanması.</td>
+</tr>
+
+<tr>
+<td>Backend Developer</td>
+<td>Server və verilənlər bazası infrastrukturu.</td>
+</tr>
+
+<tr>
+<td>Marketing Manager</td>
+<td>İstifadəçi cəlbi və kommersiya strategiyası.</td>
+</tr>
+
+<tr>
+<td>Operations Manager</td>
+<td>Elanların yoxlanması və dəstək.</td>
+</tr>
+
+</tbody>
+</table>
+
+</section>
+
+<!-- 19 -->
+
+<section id="risks">
+
+<div class="section-number">19 / RISK MANAGEMENT</div>
+
+<h2>Risklər və onların idarə olunması</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>Risk</th>
+<th>Qarşı tədbir</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>İlkin elan sayının azlığı</td>
+<td>Elan sahibləri ilə birbaşa əməkdaşlıq.</td>
+</tr>
+
+<tr>
+<td>İstifadəçi marağının zəif olması</td>
+<td>Kateqoriya və bazar sınaqları.</td>
+</tr>
+
+<tr>
+<td>Saxta elanlar</td>
+<td>Moderasiya və təsdiqləmə mexanizmləri.</td>
+</tr>
+
+<tr>
+<td>Monetizasiyanın gecikməsi</td>
+<td>Qiymət sınaqları və biznes paketləri.</td>
+</tr>
+
+<tr>
+<td>Texniki təhlükəsizlik</td>
+<td>Monitorinq, ehtiyat nüsxə və giriş nəzarəti.</td>
+</tr>
+
+<tr>
+<td>Hüquqi risklər</td>
+<td>Peşəkar hüquqi məsləhət və uyğunluq yoxlaması.</td>
+</tr>
+
+</tbody>
+</table>
+
+</section>
+
+<!-- 20 -->
+
+<section id="conclusion">
+
+<div class="section-number">20 / CONCLUSION</div>
+
+<h2>Yekun: Kirayəvar.az-ın gələcək potensialı</h2>
+
+<p>
+Kirayəvar.az kirayə bazarında təklif və tələbi
+birləşdirmək, müxtəlif kateqoriyalarda xidmət
+əlçatanlığını artırmaq və istifadə olunmayan
+resurslardan iqtisadi dəyər yaratmaq məqsədi
+daşıyan rəqəmsal marketplace konsepsiyasıdır.
+</p>
+
+<p>
+Layihənin uzunmüddətli inkişafı keyfiyyətli
+elan bazası, istifadəçi etibarı, rahat axtarış
+təcrübəsi və dayanıqlı monetizasiya modelinin
+qurulmasından asılıdır.
+</p>
+
+<h3>İnvestor təqdimatından əvvəl tamamlanmalı işlər</h3>
+
+<ol>
+    <li>Bazar araşdırması və rəqib müqayisəsi.</li>
+    <li>İstifadəçi müsahibələri.</li>
+    <li>MVP funksional spesifikasiyası.</li>
+    <li>Texniki büdcə və icra təqvimi.</li>
+    <li>12–24 aylıq maliyyə proqnozu.</li>
+    <li>İlkin tərəfdaş və elan sahiblərinin cəlbi.</li>
+    <li>Komanda profilləri və hüquqi struktur.</li>
+    <li>İnvestisiya məbləği və kapitalın istifadə planı.</li>
+</ol>
+
+<div class="highlight">
+<strong>Kirayəvar.az — kirayə təkliflərini birləşdirən,
+resurslardan daha səmərəli istifadəni təşviq edən
+rəqəmsal platforma ideyası.</strong>
+</div>
+
+</section>
+
+<section>
+
+<div class="section-number">DOCUMENT STATUS</div>
+
+<h2>Sənəd haqqında hüquqi və metodoloji qeyd</h2>
+
+<p>
+Bu material layihənin konseptual və investor
+təqdimatı sənədidir. Hazırda mövcud olmayan
+funksiyaların artıq işlədiyini iddia etmir.
+</p>
+
+<p>
+Bazar həcmi, gəlir proqnozları, istifadəçi sayı,
+komanda təcrübəsi, tərəfdaşlıqlar və maliyyə
+göstəriciləri ayrıca araşdırılmalı və sübutlarla
+dəstəklənməlidir.
+</p>
+
+<p>
+Bu sənəd hüquqi, maliyyə və ya investisiya
+məsləhəti hesab edilmir.
+</p>
+
+</section>
+
+</main>
+
+<footer>
+
+<h2 style="color:white;">Kirayəvar.az</h2>
+
+<p>
+Kirayə bazarı üçün rəqəmsal platforma konsepsiyası
+</p>
+
+<p>
+Investor Presentation · Project Concept · 2026
+</p>
+
+</footer>
 
 </body>
 </html>
