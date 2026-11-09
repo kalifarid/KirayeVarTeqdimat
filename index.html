@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kirayəvar.az - Azərbaycanda kirayə elanları platforması.">
+<title>Kirayəvar.az | Kirayə elanları</title>
+
+<style>
+:root {
+    --navy: #10243a;
+    --green: #16a36a;
+    --orange: #ff9d32;
+    --light: #f4f7fa;
+    --white: #ffffff;
+    --text: #243447;
+    --muted: #718096;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--light);
+    color: var(--text);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button, input, select, textarea {
+    font: inherit;
+}
+
+header {
+    background: var(--navy);
+    color: white;
+    padding: 17px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: var(--green);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+nav a {
+    font-size: 14px;
+    color: #e7edf4;
+}
+
+nav a:hover {
+    color: var(--orange);
+}
+
+.add-button {
+    background: var(--green);
+    color: white;
+    padding: 12px 18px;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.add-button:hover {
+    background: #118657;
+}
+
+.hero {
+    background: linear-gradient(120deg, #10243a, #174c60);
+    color: white;
+    text-align: center;
+    padding: 75px 20px;
+}
+
+.hero h1 {
+    font-size: clamp(30px, 5vw, 46px);
+    margin-bottom: 15px;
+}
+
+.hero p {
+    color: #d7e3ec;
+    font-size: 17px;
+    margin-bottom: 30px;
+}
+
+.search-box {
+    background: white;
+    padding: 12px;
+    border-radius: 12px;
+    max-width: 950px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr auto;
+    gap: 10px;
+}
+
+.search-box input,
+.search-box select {
+    padding: 14px;
+    border: 1px solid #dce3e9;
+    border-radius: 7px;
+    outline: none;
+    min-width: 0;
+    background: white;
+    color: var(--text);
+}
+
+.search-box button {
+    background: var(--orange);
+    color: white;
+    border: 0;
+    padding: 14px 24px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 45px 20px;
+}
+
+.section-title {
+    font-size: 26px;
+    color: var(--navy);
+    margin-bottom: 25px;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.category {
+    background: white;
+    padding: 25px 15px;
+    text-align: center;
+    border-radius: 12px;
+    cursor: pointer;
+    border: 1px solid #e9eef2;
+    transition: .2s;
+}
+
+.category:hover {
+    transform: translateY(-4px);
+    border-color: var(--green);
+}
+
+.category .emoji {
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+.category h3 {
+    color: var(--navy);
+    font-size: 16px;
+}
+
+.category p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+.listings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.listings {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.listing {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 14px rgba(0,0,0,.05);
+    transition: .2s;
+}
+
+.listing:hover {
+    transform: translateY(-4px);
+}
+
+.listing-image {
+    height: 190px;
+    background: #dce8e8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 65px;
+    position: relative;
+}
+
+.listing-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.favorite {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: white;
+    border: 0;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    font-size: 19px;
+}
+
+.listing-content {
+    padding: 18px;
+}
+
+.listing-content h3 {
+    font-size: 18px;
+    color: var(--navy);
+    margin-bottom: 10px;
+}
+
+.location {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.price {
+    color: var(--green);
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.price small {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.listing-footer {
+    border-top: 1px solid #edf0f3;
+    margin-top: 15px;
+    padding-top: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-button {
+    background: var(--green);
+    color: white;
+    border: 0;
+    border-radius: 6px;
+    padding: 9px 13px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: 12px;
+    color: var(--muted);
+}
+
+.why-us {
+    background: white;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.feature {
+    background: var(--light);
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.feature h3 {
+    color: var(--navy);
+    margin: 12px 0;
+}
+
+.feature p {
+    color: var(--muted);
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.65);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    padding: 28px;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 550px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-content h2 {
+    color: var(--navy);
+    margin-bottom: 20px;
+}
+
+.close {
+    float: right;
+    border: 0;
+    background: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 14px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dce3e9;
+    border-radius: 7px;
+}
+
+.form-group textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 14px;
+    border: 0;
+    border-radius: 7px;
+    background: var(--green);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+footer {
+    background: var(--navy);
+    color: white;
+    padding: 40px 6%;
+    text-align: center;
+}
+
+footer p {
+    color: #b9c7d3;
+    margin-top: 12px;
+    font-size: 13px;
+}
+
+@media(max-width: 850px) {
+    .search-box {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .listings {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 550px) {
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .search-box {
+        grid-template-columns: 1fr;
+    }
+
+    .listings {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding: 55px 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a href="#" class="logo">Kirayə<span>var</span>.az</a>
+
+    <nav>
+        <a href="#home">Ana səhifə</a>
+        <a href="#categories">Kateqoriyalar</a>
+        <a href="#listings">Elanlar</a>
+        <a href="#about">Haqqımızda</a>
+    </nav>
+
+    <button class="add-button" onclick="openModal()">
+        + Elan yerləşdir
+    </button>
+</header>
+
+<section class="hero" id="home">
+    <h1>İstədiyini kirayələ, asanlıqla tap!</h1>
+    <p>Kirayəvar.az – Azərbaycanda kirayə elanları üçün vahid platforma.</p>
+
+    <div class="search-box">
+        <input type="text" id="searchInput"
+               placeholder="Nə axtarırsınız?">
+
+        <select id="categoryFilter">
+            <option value="">Bütün kateqoriyalar</option>
+            <option value="Əmlak">Əmlak</option>
+            <option value="Nəqliyyat">Nəqliyyat</option>
+            <option value="Texnika">Texnika</option>
+            <option value="Digər">Digər</option>
+        </select>
+
+        <select id="cityFilter">
+            <option value="">Bütün şəhərlər</option>
+            <option value="Bakı">Bakı</option>
+            <option value="Sumqayıt">Sumqayıt</option>
+            <option value="Gəncə">Gəncə</option>
+            <option value="Mingəçevir">Mingəçevir</option>
+        </select>
+
+        <button onclick="filterListings()">Axtar</button>
+    </div>
+</section>
+
+<section class="container" id="categories">
+    <h2 class="section-title">Kateqoriyalar</h2>
+
+    <div class="categories">
+
+        <div class="category" onclick="selectCategory('Əmlak')">
+            <div class="emoji">🏠</div>
+            <h3>Əmlak</h3>
+            <p>Ev, mənzil, obyekt</p>
+        </div>
+
+        <div class="category" onclick="selectCategory('Nəqliyyat')">
+            <div class="emoji">🚗</div>
+            <h3>Nəqliyyat</h3>
+            <p>Avtomobil, motosiklet</p>
+        </div>
+
+        <div class="category" onclick="selectCategory('Texnika')">
+            <div class="emoji">💻</div>
+            <h3>Texnika</h3>
+            <p>Kompüter, kamera, avadanlıq</p>
+        </div>
+
+        <div class="category" onclick="selectCategory('Digər')">
+            <div class="emoji">📦</div>
+            <h3>Digər</h3>
+            <p>Müxtəlif kirayə məhsulları</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="container" id="listings">
+
+    <div class="listings-header">
+        <h2 class="section-title">Son elanlar</h2>
+        <span id="resultCount"></span>
+    </div>
+
+    <div class="listings" id="listingContainer"></div>
+
+</section>
+
+<section class="why-us" id="about">
+    <div class="container">
+        <h2 class="section-title">Niyə Kirayəvar.az?</h2>
+
+        <div class="features">
+
+            <div class="feature">
+                <div class="emoji">🔎</div>
+                <h3>Asan axtarış</h3>
+                <p>İstədiyiniz məhsulu kateqoriyalara və şəhərlərə
+                görə rahatlıqla tapa bilərsiniz.</p>
+            </div>
+
+            <div class="feature">
+                <div class="emoji">📢</div>
+                <h3>Asan elan yerləşdirmə</h3>
+                <p>Kirayə vermək istədiyiniz məhsul və ya əmlak
+                haqqında elan yarada bilərsiniz.</p>
+            </div>
+
+            <div class="feature">
+                <div class="emoji">🤝</div>
+                <h3>Birbaşa əlaqə</h3>
+                <p>Elan sahibi ilə telefon və ya WhatsApp vasitəsilə
+                əlaqə saxlaya bilərsiniz.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    <h2>Kirayəvar.az</h2>
+    <p>Kirayə axtarışının rahat yolu.</p>
+    <p>© 2026 Kirayəvar.az. Bütün hüquqlar qorunur.</p>
+</footer>
+
+<!-- ELAN ƏLAVƏ ET PƏNCƏRƏSİ -->
+
+<div class="modal" id="listingModal">
+    <div class="modal-content">
+
+        <button class="close" onclick="closeModal()">×</button>
+
+        <h2>Yeni elan yerləşdir</h2>
+
+        <form id="listingForm">
+
+            <div class="form-group">
+                <label>Elanın adı</label>
+                <input type="text" id="title" required
+                       placeholder="Məsələn: 2 otaqlı mənzil">
+            </div>
+
+            <div class="form-group">
+                <label>Kateqoriya</label>
+                <select id="newCategory" required>
+                    <option value="">Seçin</option>
+                    <option>Əmlak</option>
+                    <option>Nəqliyyat</option>
+                    <option>Texnika</option>
+                    <option>Digər</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Şəhər</label>
+                <select id="newCity" required>
+                    <option value="">Seçin</option>
+                    <option>Bakı</option>
+                    <option>Sumqayıt</option>
+                    <option>Gəncə</option>
+                    <option>Mingəçevir</option>
+                    <option>Digər</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Qiymət (AZN)</label>
+                <input type="number" id="price" min="0"
+                       required placeholder="Məsələn: 250">
+            </div>
+
+            <div class="form-group">
+                <label>Telefon nömrəsi</label>
+                <input type="tel" id="phone" required
+                       placeholder="+994...">
+            </div>
+
+            <div class="form-group">
+                <label>Şəkil linki (istəyə bağlı)</label>
+                <input type="url" id="imageUrl"
+                       placeholder="https://...">
+            </div>
+
+            <div class="form-group">
+                <label>Açıqlama</label>
+                <textarea id="description"
+                          placeholder="Elan haqqında məlumat..."></textarea>
+            </div>
+
+            <button class="submit-button" type="submit">
+                Elanı yerləşdir
+            </button>
+
+        </form>
+    </div>
+</div>
+
+<script>
+
+// DEMO ELANLAR
+
+let listings = [
+    {
+        id: 1,
+        title: "2 otaqlı mənzil kirayə verilir",
+        category: "Əmlak",
+        city: "Bakı",
+        price: 450,
+        phone: "+994501234567",
+        description: "Şəhərin mərkəzinə yaxın mənzil.",
+        image: "",
+        emoji: "🏠"
+    },
+    {
+        id: 2,
+        title: "Avtomobil kirayəsi",
+        category: "Nəqliyyat",
+        city: "Bakı",
+        price: 70,
+        phone: "+994501234567",
+        description: "Günlük avtomobil kirayəsi.",
+        image: "",
+        emoji: "🚗"
+    },
+    {
+        id: 3,
+        title: "Noutbuk kirayəsi",
+        category: "Texnika",
+        city: "Gəncə",
+        price: 15,
+        phone: "+994501234567",
+        description: "İş və təhsil üçün noutbuk.",
+        image: "",
+        emoji: "💻"
+    },
+    {
+        id: 4,
+        title: "Bağ evi kirayə verilir",
+        category: "Əmlak",
+        city: "Sumqayıt",
+        price: 100,
+        phone: "+994501234567",
+        description: "Ailəvi istirahət üçün bağ evi.",
+        image: "",
+        emoji: "🏡"
+    },
+    {
+        id: 5,
+        title: "Fotoaparat kirayəsi",
+        category: "Texnika",
+        city: "Bakı",
+        price: 25,
+        phone: "+994501234567",
+        description: "Foto və video çəkilişləri üçün.",
+        image: "",
+        emoji: "📷"
+    },
+    {
+        id: 6,
+        title: "Tədbir avadanlıqları",
+        category: "Digər",
+        city: "Gəncə",
+        price: 40,
+        phone: "+994501234567",
+        description: "Müxtəlif tədbirlər üçün avadanlıq.",
+        image: "",
+        emoji: "📦"
+    }
+];
+
+let favorites = [];
+
+function renderListings(data = listings) {
+
+    const container = document.getElementById("listingContainer");
+
+    document.getElementById("resultCount").textContent =
+        data.length + " elan";
+
+    if (data.length === 0) {
+        container.innerHTML =
+            '<div class="empty">Axtarışınıza uyğun elan tapılmadı.</div>';
+        return;
+    }
+
+    container.innerHTML = data.map(item => `
+
+        <article class="listing">
+
+            <div class="listing-image">
+                ${
+                    item.image
+                    ? `<img src="${escapeHTML(item.image)}"
+                             alt="${escapeHTML(item.title)}"
+                             onerror="this.style.display='none'">`
+                    : item.emoji
+                }
+
+                <button class="favorite"
+                    onclick="toggleFavorite(${item.id})"
+                    title="Seçilmişlərə əlavə et">
+                    ${favorites.includes(item.id) ? "❤️" : "♡"}
+                </button>
+            </div>
+
+            <div class="listing-content">
+
+                <h3>${escapeHTML(item.title)}</h3>
+
+                <p class="location">
+                    📍 ${escapeHTML(item.city)} ·
+                    ${escapeHTML(item.category)}
+                </p>
+
+                <p class="price">
+                    ${Number(item.price).toLocaleString("az-AZ")} AZN
+                    <small>/ razılaşma</small>
+                </p>
+
+                <div class="listing-footer">
+
+                    <span>Kirayə elanı</span>
+
+                    <button class="contact-button"
+                        onclick="contactSeller('${escapeHTML(item.phone)}')">
+                        Əlaqə
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    `).join("");
+}
+
+function escapeHTML(value) {
+    return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    })[char]);
+}
+
+// AXTARIŞ VƏ FİLTR
+
+function filterListings() {
+
+    const search = document.getElementById("searchInput")
+        .value.toLowerCase().trim();
+
+    const category = document.getElementById("categoryFilter").value;
+    const city = document.getElementById("cityFilter").value;
+
+    const filtered = listings.filter(item => {
+
+        const matchesSearch =
+            item.title.toLowerCase().includes(search) ||
+            item.description.toLowerCase().includes(search);
+
+        const matchesCategory =
+            !category || item.category === category;
+
+        const matchesCity =
+            !city || item.city === city;
+
+        return matchesSearch && matchesCategory && matchesCity;
+    });
+
+    renderListings(filtered);
+}
+
+function selectCategory(category) {
+
+    document.getElementById("categoryFilter").value = category;
+
+    document.getElementById("listings").scrollIntoView({
+        behavior: "smooth"
+    });
+
+    filterListings();
+}
+
+// SEÇİLMİŞ ELANLAR
+
+function toggleFavorite(id) {
+
+    if (favorites.includes(id)) {
+        favorites = favorites.filter(item => item !== id);
+    } else {
+        favorites.push(id);
+    }
+
+    filterListings();
+}
+
+// ƏLAQƏ
+
+function contactSeller(phone) {
+
+    const cleanPhone = phone.replace(/[^\d+]/g, "");
+
+    if (!cleanPhone) {
+        alert("Telefon nömrəsi mövcud deyil.");
+        return;
+    }
+
+    const whatsappNumber = cleanPhone.replace(/\D/g, "");
+
+    const choice = confirm(
+        "OK düyməsi WhatsApp-a, Cancel düyməsi telefon zənginə keçid edir."
+    );
+
+    if (choice) {
+        window.open(
+            "https://wa.me/" + whatsappNumber,
+            "_blank"
+        );
+    } else {
+        window.location.href = "tel:" + cleanPhone;
+    }
+}
+
+// ELAN ƏLAVƏ ET
+
+function openModal() {
+    document.getElementById("listingModal").classList.add("active");
+}
+
+function closeModal() {
+    document.getElementById("listingModal").classList.remove("active");
+}
+
+document.getElementById("listingForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const newListing = {
+
+        id: Date.now(),
+
+        title: document.getElementById("title").value.trim(),
+
+        category: document.getElementById("newCategory").value,
+
+        city: document.getElementById("newCity").value,
+
+        price: Number(document.getElementById("price").value),
+
+        phone: document.getElementById("phone").value.trim(),
+
+        image: document.getElementById("imageUrl").value.trim(),
+
+        description:
+            document.getElementById("description").value.trim(),
+
+        emoji: "📦"
+    };
+
+    if (!newListing.title || !newListing.phone ||
+        !newListing.category || !newListing.city ||
+        !Number.isFinite(newListing.price) ||
+        newListing.price < 0) {
+
+        alert("Zəhmət olmasa, məlumatları düzgün doldurun.");
+        return;
+    }
+
+    listings.unshift(newListing);
+
+    renderListings();
+
+    this.reset();
+
+    closeModal();
+
+    document.getElementById("listings").scrollIntoView({
+        behavior: "smooth"
+    });
+
+    alert("Elan bu demo səhifəyə əlavə edildi!");
+});
+
+// ENTER İLƏ AXTARIŞ
+
+document.getElementById("searchInput")
+.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        filterListings();
+    }
+});
+
+// İLK YÜKLƏNMƏ
+
+renderListings();
+
+</script>
+
+</body>
+</html>
